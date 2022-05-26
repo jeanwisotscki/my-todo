@@ -45,7 +45,7 @@ button {
   margin-top: -1.6rem;
 }
 
-.tasks {
+.task-list-container {
   border: 1px solid red;
 }
 
@@ -72,18 +72,29 @@ button {
   padding: 0 1rem;
 }
 
-.task {
+.task-item {
   background-color: #aaa;
-  height: 2.5rem;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0.5rem 0;
   padding: 0 1rem;
   border-radius: 0.5rem;
+  border: 1px solid red;
+}
+
+.task-item p {
+  margin: 0.5rem 1rem;
 }
 
 .btns-container {
   display: flex;
+  border: 1px solid red;
+  margin: 0;
+  padding: 0;
+}
+.btns-container button i {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid red;
 }
