@@ -7,8 +7,7 @@ const taskListContainer = document.querySelector(".task-list-container");
 const validateInput = () => inputTaskAdd.value.trim().length > 0;
 
 // adicionar tarefa
-const handleAdd = (e) => {
-  e.preventDefault();
+const handleAdd = () => {
   const inputIsValid = validateInput();
 
   if (!inputIsValid) {
@@ -16,46 +15,62 @@ const handleAdd = (e) => {
     return;
   }
 
+  // criar container da task
   const taskItem = document.createElement("div");
   taskItem.classList = "task-item";
 
+  // criar texto da task
   const taskContent = document.createElement("p");
   taskContent.innerHTML = inputTaskAdd.value;
   taskItem.appendChild(taskContent);
 
-  const btnsContainer = document.createElement("div");
-  btnsContainer.classList = "btns-container";
+  taskItem.addEventListener("click", () => {
+    handleComplete(taskContent);
+  });
 
-  const btnEdit = document.createElement("button");
-  btnEdit.setAttribute("data-btn-edit", "");
-
-  const iconEdit = document.createElement("i");
-  iconEdit.classList = "fa-regular fa-pen-to-square";
-  btnEdit.appendChild(iconEdit);
-  btnsContainer.appendChild(btnEdit);
-
+  // criar button da task
   const btnDelete = document.createElement("button");
   btnDelete.setAttribute("data-btn-delete", "");
 
   const iconDelete = document.createElement("i");
   iconDelete.classList = "fa-regular fa-trash-can";
   btnDelete.appendChild(iconDelete);
-  btnsContainer.appendChild(btnDelete);
+  taskItem.appendChild(btnDelete);
 
-  taskItem.appendChild(btnsContainer);
+  btnDelete.addEventListener("click", () => {
+    handleDelete(taskItem, taskContent);
+  });
+
+  // adicionar task a lista de tasks
   taskListContainer.appendChild(taskItem);
 
+  // limpar input após adicionar a task
   inputTaskAdd.value = "";
 };
 
-btnAdd.addEventListener("click", handleAdd);
-
 // deletar tarefa
-function handleDelete() {
-  console.log("deletar");
+function handleDelete(taskItem, taskContent) {
+  const tasks = taskListContainer.childNodes;
+
+  for (const task of tasks) {
+    if (task.firstChild.isSameNode(taskContent)) {
+      taskItem.remove();
+    }
+  }
 }
 
-// editar tarefa
-function handleEdit() {
-  console.log("editar");
+// completar tarefa
+function handleComplete(taskContent) {
+  const tasks = taskListContainer.childNodes;
+
+  for (const task of tasks) {
+    if (task.firstChild.isSameNode(taskContent)) {
+      task.firstChild.classList.toggle("completed");
+    }
+  }
 }
+
+inputTaskAdd.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) handleAdd();
+});
+btnAdd.addEventListener("click", handleAdd);

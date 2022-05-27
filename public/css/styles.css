@@ -46,7 +46,7 @@ button {
 }
 
 .task-list-container {
-  border: 1px solid red;
+  border: 1px solid transparent;
 }
 
 .input-box {
@@ -80,6 +80,7 @@ button {
   margin: 0.5rem 0;
   padding: 0 1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .task-item p {
@@ -93,4 +94,9 @@ button {
 }
 .btns-container button i {
   font-size: 1.3rem;
+}
+
+.completed {
+  color: rgb(36, 194, 36);
+  text-decoration: line-through;
 }
