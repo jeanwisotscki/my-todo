@@ -1,3 +1,11 @@
+:root {
+  --color1: #0c1829;
+  --color2: #132742;
+  --color3: #e2dfdd;
+  --color4: #0294a5;
+  --color5: #c1403d;
+}
+
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -6,7 +14,7 @@
 }
 
 body {
-  background-color: #bbb;
+  background-color: var(--color1);
   height: 100%;
   display: flex;
   align-items: center;
@@ -25,9 +33,9 @@ button {
 }
 
 .app {
-  background-color: #ccc;
+  background-color: var(--color2);
   min-height: 80vh;
-  max-width: 980px;
+  max-width: 900px;
   width: 80%;
   display: grid;
   grid-template-columns: 1fr;
@@ -42,11 +50,10 @@ button {
 }
 
 .head h1 {
-  margin-top: -1.6rem;
-}
-
-.task-list-container {
-  border: 1px solid transparent;
+  color: var(--color3);
+  margin-top: -1rem;
+  margin-right: 0.5rem;
+  line-height: 1;
 }
 
 .input-box {
@@ -59,11 +66,12 @@ button {
   border-radius: 0.5rem;
 }
 
-.input {
+.input-box input {
   height: 2.5rem;
   width: 90%;
   background: none;
-  background-color: #eee;
+  background-color: var(--color3);
+  color: var(--color2);
   font-size: 1rem;
   border: none;
   outline: none;
@@ -71,9 +79,29 @@ button {
   border-radius: 0.5rem;
   padding: 0 1rem;
 }
+.input-box input::placeholder {
+  color: var(--color2);
+}
+.input-box input:focus,
+.input-box input:hover {
+  box-shadow: 0 0 0px 3px var(--color4);
+}
+
+.input-box button {
+  padding: 0.5rem 1rem;
+}
+
+.input-box button i {
+  color: var(--color3);
+  font-size: 2.5rem;
+}
+
+.task-list-container {
+  transition: 0.3s;
+}
 
 .task-item {
-  background-color: #aaa;
+  background-color: var(--color3);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -81,22 +109,35 @@ button {
   padding: 0 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  animation: rotacionar-Y 0.3s forwards;
+}
+
+@keyframes rotacionar-Y {
+  from {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
 }
 
 .task-item p {
+  color: var(--color2);
   margin: 0.5rem 1rem;
 }
 
-.btns-container {
-  display: flex;
-  margin: 0;
-  padding: 0;
+.task-item button {
+  padding: 0.5rem 1.5rem;
 }
-.btns-container button i {
-  font-size: 1.3rem;
+
+.task-item button i {
+  color: var(--color5);
+  font-size: 1.2rem;
 }
 
 .completed {
-  color: rgb(36, 194, 36);
+  color: var(--color4) !important;
   text-decoration: line-through;
 }
