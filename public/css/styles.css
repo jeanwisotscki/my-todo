@@ -5,6 +5,9 @@
   --color4: #0294a5;
   --color5: #c1403d;
 }
+.error {
+  box-shadow: 0 0 0px 3px var(--color5) !important;
+}
 
 * {
   font-family: "Poppins", sans-serif;
@@ -98,6 +101,7 @@ button {
 
 .task-list-container {
   transition: 0.3s;
+  margin-top: 1rem;
 }
 
 .task-item {
@@ -140,4 +144,13 @@ button {
 .completed {
   color: var(--color4) !important;
   text-decoration: line-through;
+}
+
+/*
+  Dragging and drop
+******/
+.is-dragging {
+  cursor: crosshair;
+  opacity: 0.2;
+  animation: none;
 }
