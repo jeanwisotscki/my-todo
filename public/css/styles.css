@@ -80,7 +80,6 @@ button {
   margin: 0.5rem 0;
   padding: 0 1rem;
   border-radius: 0.5rem;
-  border: 1px solid red;
 }
 
 .task-item p {
@@ -89,12 +88,9 @@ button {
 
 .btns-container {
   display: flex;
-  border: 1px solid red;
   margin: 0;
   padding: 0;
 }
 .btns-container button i {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid red;
+  font-size: 1.3rem;
 }

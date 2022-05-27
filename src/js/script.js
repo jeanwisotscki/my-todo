@@ -1,54 +1,51 @@
-const inpAdd = document.querySelector("[data-input-add]");
+const inputTaskAdd = document.querySelector("[data-input-add]");
 const btnAdd = document.querySelector("[data-btn-add]");
-const btnDelete = document.querySelectorAll("[data-delete]");
-const btnEdit = document.querySelectorAll("[data-edit]");
-const tasksListElement = document.querySelector("[data-tasks-list]");
+const btnDelete = document.querySelectorAll("[data-btn-delete]");
+const btnEdit = document.querySelectorAll("[data-btn-edit]");
+const taskListContainer = document.querySelector(".task-list-container");
+
+const validateInput = () => inputTaskAdd.value.trim().length > 0;
 
 // adicionar tarefa
 const handleAdd = (e) => {
   e.preventDefault();
+  const inputIsValid = validateInput();
 
-  if (!inpAdd.value) {
-    alert("teste");
+  if (!inputIsValid) {
+    alert("vazio");
     return;
   }
 
-  const task = document.createElement("div");
-  task.classList = "task";
+  const taskItem = document.createElement("div");
+  taskItem.classList = "task-item";
 
-  const inp = document.createElement("input");
-  inp.setAttribute("type", "checkbox");
-  task.appendChild(inp);
-
-  const p = document.createElement("p");
-  p.innerHTML = inpAdd.value;
-  task.appendChild(p);
+  const taskContent = document.createElement("p");
+  taskContent.innerHTML = inputTaskAdd.value;
+  taskItem.appendChild(taskContent);
 
   const btnsContainer = document.createElement("div");
   btnsContainer.classList = "btns-container";
 
   const btnEdit = document.createElement("button");
-  btnEdit.setAttribute("data-edit", "");
-  btnEdit.setAttribute("onclick", "handleEdit()");
-  const imgEdit = document.createElement("img");
-  imgEdit.setAttribute("src", "../src/assets/mode_black_24dp.svg");
-  imgEdit.setAttribute("alt", "edit task icon");
-  btnEdit.appendChild(imgEdit);
+  btnEdit.setAttribute("data-btn-edit", "");
+
+  const iconEdit = document.createElement("i");
+  iconEdit.classList = "fa-regular fa-pen-to-square";
+  btnEdit.appendChild(iconEdit);
   btnsContainer.appendChild(btnEdit);
 
   const btnDelete = document.createElement("button");
-  btnDelete.setAttribute("data-delete", "");
-  btnDelete.setAttribute("onclick", "handleDelete()");
-  const imgDelete = document.createElement("img");
-  imgDelete.setAttribute("src", "../src/assets/delete_black_24dp.svg");
-  imgDelete.setAttribute("alt", "delete task icon");
-  btnDelete.appendChild(imgDelete);
+  btnDelete.setAttribute("data-btn-delete", "");
+
+  const iconDelete = document.createElement("i");
+  iconDelete.classList = "fa-regular fa-trash-can";
+  btnDelete.appendChild(iconDelete);
   btnsContainer.appendChild(btnDelete);
 
-  task.appendChild(btnsContainer);
-  tasksListElement.appendChild(task);
+  taskItem.appendChild(btnsContainer);
+  taskListContainer.appendChild(taskItem);
 
-  inpAdd.value = "";
+  inputTaskAdd.value = "";
 };
 
 btnAdd.addEventListener("click", handleAdd);
