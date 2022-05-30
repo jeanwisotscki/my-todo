@@ -122,50 +122,53 @@ function updateLocalStorage() {
 function refreshTasksUsingLocalStorage() {
   const tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"));
 
-  for (const task of tasksFromLocalStorage) {
-    // cria o container da task
-    const taskItem = document.createElement("div");
-    taskItem.setAttribute("draggable", true);
-    taskItem.classList = "task-item";
+  if (tasksFromLocalStorage) {
+    for (const task of tasksFromLocalStorage) {
+      // cria o container da task
+      const taskItem = document.createElement("div");
+      taskItem.setAttribute("draggable", true);
+      taskItem.classList = "task-item";
 
-    // cria o texto da task
-    const taskContent = document.createElement("p");
-    taskContent.innerText = task.description;
-    if (task.isCompleted) {
-      taskContent.classList.add("completed");
+      // cria o texto da task
+      const taskContent = document.createElement("p");
+      taskContent.innerText = task.description;
+      if (task.isCompleted) {
+        taskContent.classList.add("completed");
+      }
+      taskItem.appendChild(taskContent);
+
+      // cria o button da task
+      const btnDelete = document.createElement("button");
+      btnDelete.setAttribute("data-btn-delete", "");
+
+      const iconDelete = document.createElement("i");
+      iconDelete.classList = "fa-regular fa-trash-can";
+      btnDelete.appendChild(iconDelete);
+      taskItem.appendChild(btnDelete);
+
+      // adiciona task a lista de tasks
+      taskListContainer.appendChild(taskItem);
+
+      // listener de delete
+      btnDelete.addEventListener("click", () => {
+        handleDeleteTask(taskItem, taskContent);
+      });
+
+      // listener de tarefa completa
+      taskItem.addEventListener("click", () => {
+        handleCompleteTask(taskContent);
+      });
+
+      // listeners de drag
+      taskItem.addEventListener("dragstart", ({ target }) => {
+        dragstart(target);
+      });
+      taskItem.addEventListener("dragend", ({ target }) => {
+        dragend(target);
+      });
     }
-    taskItem.appendChild(taskContent);
-
-    // cria o button da task
-    const btnDelete = document.createElement("button");
-    btnDelete.setAttribute("data-btn-delete", "");
-
-    const iconDelete = document.createElement("i");
-    iconDelete.classList = "fa-regular fa-trash-can";
-    btnDelete.appendChild(iconDelete);
-    taskItem.appendChild(btnDelete);
-
-    // adiciona task a lista de tasks
-    taskListContainer.appendChild(taskItem);
-
-    // listener de delete
-    btnDelete.addEventListener("click", () => {
-      handleDeleteTask(taskItem, taskContent);
-    });
-
-    // listener de tarefa completa
-    taskItem.addEventListener("click", () => {
-      handleCompleteTask(taskContent);
-    });
-
-    // listeners de drag
-    taskItem.addEventListener("dragstart", ({ target }) => {
-      dragstart(target);
-    });
-    taskItem.addEventListener("dragend", ({ target }) => {
-      dragend(target);
-    });
   }
+  return;
 }
 
 /* Funções de drag and drop
