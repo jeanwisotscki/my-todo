@@ -6,6 +6,15 @@
   --color5: #c1403d;
 }
 
+/*
+  Classes aplicadas com js
+******************************/
+.is-dragging {
+  cursor: crosshair;
+  opacity: 0.2;
+  animation: none;
+}
+
 .error {
   box-shadow: 0 0 0px 3px var(--color5) !important;
 }
@@ -18,6 +27,8 @@
   text-decoration: line-through;
 }
 
+/* Main
+**************************/
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -117,12 +128,26 @@ button {
   background-color: var(--color3);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin: 0.5rem 0;
   padding: 0 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
   animation: rotacionar-Y 0.3s forwards;
+}
+
+.task-item p {
+  color: var(--color2);
+  width: 100%;
+  margin: 0.5rem 0rem;
+}
+
+.task-item button {
+  padding: 0.5rem 1.5rem;
+}
+
+.task-item button i {
+  color: var(--color5);
+  font-size: 1.2rem;
 }
 
 @keyframes rotacionar-Y {
@@ -136,25 +161,35 @@ button {
   }
 }
 
-.task-item p {
-  color: var(--color2);
-  margin: 0.5rem 1rem;
-}
+/* Media queries
+*******************/
+@media (max-width: 648px) {
+  .app {
+    min-width: 260px;
+    width: 94%;
+    text-align: center;
+    padding: 1em;
+  }
 
-.task-item button {
-  padding: 0.5rem 1.5rem;
-}
+  .head {
+    display: block;
+  }
+  .head h1 {
+    margin: 0 0 1rem 0;
+  }
 
-.task-item button i {
-  color: var(--color5);
-  font-size: 1.2rem;
-}
+  .input-box {
+    padding: 0rem;
+    max-width: 100%;
+  }
+  .input-box input {
+    margin-left: 0;
+  }
 
-/*
-  Dragging and drop
-******/
-.is-dragging {
-  cursor: crosshair;
-  opacity: 0.2;
-  animation: none;
+  .task-item p {
+    text-align: start;
+  }
+  .task-item button {
+    padding: 0.5rem 1rem;
+  }
 }
