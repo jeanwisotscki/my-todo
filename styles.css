@@ -173,6 +173,7 @@ button {
 
   .head {
     display: block;
+    margin-bottom: 2rem;
   }
   .head h1 {
     margin: 2rem 0;
