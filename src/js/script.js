@@ -6,8 +6,16 @@ const taskListContainer = document.querySelector(".task-list-container");
 
 const validateInput = () => inputTaskAdd.value.trim().length > 0;
 
-// adicionar tarefa
-const handleAdd = () => {
+function removeInputErrorClass() {
+  const inputIsValid = validateInput();
+
+  if (inputIsValid) {
+    inputTaskAdd.classList.remove("error");
+  }
+}
+
+// adiciona tarefa
+function handleAdd() {
   const inputIsValid = validateInput();
 
   // verifica se o input está vazio
@@ -16,7 +24,6 @@ const handleAdd = () => {
     inputTaskAdd.classList.add("error");
     return;
   }
-  inputTaskAdd.classList.remove("error");
 
   // cria o container da task
   const taskItem = document.createElement("div");
@@ -59,7 +66,7 @@ const handleAdd = () => {
 
   // limpa input após adicionar a task
   inputTaskAdd.value = "";
-};
+}
 
 // deletar tarefa
 function handleDelete(taskItem, taskContent) {
@@ -110,6 +117,8 @@ function dragleave(target) {
 }
 
 /* event listeners */
+inputTaskAdd.addEventListener("input", removeInputErrorClass);
+
 taskListContainer.addEventListener("dragover", ({ target }) => {
   dragover(target);
   const taskIsBeingDragged = document.querySelector(".is-dragging");
