@@ -5,8 +5,17 @@
   --color4: #0294a5;
   --color5: #c1403d;
 }
+
 .error {
   box-shadow: 0 0 0px 3px var(--color5) !important;
+}
+.error::placeholder {
+  color: var(--color5) !important;
+}
+
+.completed {
+  color: var(--color4) !important;
+  text-decoration: line-through;
 }
 
 * {
@@ -139,11 +148,6 @@ button {
 .task-item button i {
   color: var(--color5);
   font-size: 1.2rem;
-}
-
-.completed {
-  color: var(--color4) !important;
-  text-decoration: line-through;
 }
 
 /*
