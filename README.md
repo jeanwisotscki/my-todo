@@ -6,7 +6,7 @@
 
 Confira o resultado [clicando aqui](https://jeanwisotscki.github.io/my-todo/) (Dica: control + click para abrir o link em uma nova guia. 😉)
 
-# Gif
+# Preview do projeto
 
 ![project](./src/assets/my-TO_DO.gif)
 
