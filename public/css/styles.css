@@ -6,27 +6,6 @@
   --color5: #c1403d;
 }
 
-/*
-  Classes aplicadas com js
-******************************/
-.is-dragging {
-  cursor: crosshair;
-  opacity: 0.2;
-  animation: none;
-}
-
-.error {
-  box-shadow: 0 0 0px 3px var(--color5) !important;
-}
-.error::placeholder {
-  color: var(--color5) !important;
-}
-
-.completed {
-  color: var(--color4) !important;
-  text-decoration: line-through;
-}
-
 /* Main
 **************************/
 * {
@@ -129,7 +108,7 @@ button {
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
   animation: rotacionar-Y 0.3s forwards;
@@ -159,6 +138,27 @@ button {
     opacity: 1;
     transform: rotateY(0deg);
   }
+}
+
+/*
+  Classes aplicadas com js
+******************************/
+.is-dragging {
+  cursor: crosshair;
+  opacity: 0.2;
+  animation: none;
+}
+
+.error {
+  box-shadow: 0 0 0px 3px var(--color5) !important;
+}
+.error::placeholder {
+  color: var(--color5) !important;
+}
+
+.completed {
+  color: var(--color4) !important;
+  text-decoration: line-through;
 }
 
 /* Media queries
